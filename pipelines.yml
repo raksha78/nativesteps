@@ -7,8 +7,7 @@ resources:
       branches:
         include: master
 
-apiVersion: v1.1
-pipeline: 
+pipelines: 
   - name: dockerPipe
     steps:
       - name: buildStep
