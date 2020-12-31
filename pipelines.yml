@@ -3,7 +3,7 @@ resources:
     type: GitRepo
     configuration:
       gitProvider: raksha78_github                     
-      path: raksha78/windowsimage   
+      path: raksha78//nativesteps   
       branches:
         include: master
 
