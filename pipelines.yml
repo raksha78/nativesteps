@@ -9,14 +9,14 @@ resources:
 
 pipelines:
   - name: dockerPipe
-    configuration:
-      nodePool: win_2019
+#     configuration:
+#       nodePool: win_2019
     steps:
       - name: buildStep
         type: DockerBuild
         configuration:
-          dockerFileLocation: .
-          dockerFileName: Dockerfile
+#           dockerFileLocation: .
+#           dockerFileName: Dockerfile
           dockerImageName: dev.jfrog-pipelines.com/rak_docker/img
           dockerImageTag: ${run_number}
           integrations:
