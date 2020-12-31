@@ -1,0 +1,25 @@
+resources:
+  - name: repo
+    type: GitRepo
+    configuration:
+      gitProvider: raksha78_github                     
+      path: raksha78/windowsimage   
+      branches:
+        include: master
+
+pipelines:
+  - name: dockerPipe
+    configuration:
+      nodePool: win_2019
+    steps:
+      - name: buildStep
+        type: DockerBuild
+        configuration:
+          dockerFileLocation: .
+          dockerFileName: Dockerfile
+          dockerImageName: dev.jfrog-pipelines.com/rak_docker/img
+          dockerImageTag: ${run_number}
+          integrations:
+            - name: art_v
+          inputResources:
+            - name: repo
