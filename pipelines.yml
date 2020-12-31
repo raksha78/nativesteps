@@ -7,19 +7,22 @@ resources:
       branches:
         include: master
 
-pipelines:
+apiVersion: v1.1
+pipeline: 
   - name: dockerPipe
-#     configuration:
-#       nodePool: win_2019
     steps:
       - name: buildStep
         type: DockerBuild
         configuration:
-#           dockerFileLocation: .
-#           dockerFileName: Dockerfile
-          dockerImageName: dev.jfrog-pipelines.com/rak_docker/img
-          dockerImageTag: ${run_number}
-          integrations:
-            - name: art_v
+          #inherits from bash
+          # for docker:
+#           dockerFileLocation: <string> # optional, defaults to .
+#           dockerFileName: <string>     # optional, defaults to Dockerfile
+          dockerImageName: dev.jfrog-pipelines.com/rak_docker/img   
+          dockerImageTag:  ${run_number}    
+#           dockerOptions: <string>      # optional
           inputResources:
-            - name: repo
+#             - artifactoryFileSpec      # optional
+#             - someGitRepoResource      # required
+              - name: repo   # optional if base image is private
+
